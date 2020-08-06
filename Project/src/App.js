@@ -1,29 +1,31 @@
 import React from "react";
-
 import "./App.css";
-// import Login from "./pages/loginPages";
 import SignUp from "./pages/SignUp";
-import { firebaseApp}  from "./firebase";
-import { Switch, Route } from "react-router-dom";
+import Login from "./pages/Login";
 
+import { Switch, Route  } from "react-router-dom";
+import { browserHistory } from "react-router";
+import {firebaseApp} from "./firebase";
+import Logout from "./pages/Logout";
 
-
-firebaseApp.auth().onAuthStateChanged(user =>{
+firebaseApp.auth().onAuthStateChanged(user=>{
   if(user){
     console.log("user has signed in or up",user)
-  } else {
-    console.log("user is signed out or still needs to sign in")
+    browserHistory.push("/logout")
+  }else {
+    console.log("user has signed out or still needs to sign in")
+     browserHistory.replace("/login")
   }
 })
+
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path = "/signUp" component={SignUp}/>
-        {/* <Route path = "/login" component={Login}/> */}
+      <Route exact path="/logout" component={Logout}/>  
+      <Route exact path="/signUp" component={SignUp} />
+      <Route exact path="/login" component={Login} /> 
       </Switch>
-      
-      
     </div>
   );
 }

@@ -22,13 +22,15 @@ class SignUp extends Component {
     .catch(error => {
       console.log("error",error)
       this.setState({error})
+      
     })
   }
+  
   render() {
     return (
       <div className="form-inline">
         <h2>Sign Up</h2>
-        <div className="form-group">
+        <form onSubmit={this.handleeSubmit} className="form-group">
           <input className="form-control"
           type="text"
           placeholder="email"
@@ -41,7 +43,7 @@ class SignUp extends Component {
           <button className="btn btn-primary"
           type="button"
           onClick={()=>this.signUp()}>Sign Up</button>
-        </div>
+        </form>
         <div>{this.state.error.message}</div>
         <div>Already a user ?<Link to ={"/login"}> Login</Link></div>
       </div>

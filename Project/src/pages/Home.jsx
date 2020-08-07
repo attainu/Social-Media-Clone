@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import {firebaseApp} from "../firebase"
 import { connect} from 'react-redux';
+import {Link} from "react-router-dom"
 
-class Logout extends Component {
+class Home extends Component {
     LogOut(){
     firebaseApp.auth().signOut()
     }
     render() {
         return (
             <div>
-               
-                <button className="btn btn-dander"
+               <Link to ="/login">
+               <button className="btn btn-dander"
                 onClick={()=> this.LogOut()}>Logout</button>
+               </Link>
+                
              
                 
                 
@@ -23,4 +26,4 @@ function mapStateToProps(state){
 console.log("state",state);
 return {}
 }
-export default connect(mapStateToProps,null) (Logout);
+export default connect(mapStateToProps,null) (Home);

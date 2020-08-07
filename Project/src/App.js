@@ -7,10 +7,14 @@ import { Switch, Route  } from "react-router-dom";
 import { browserHistory } from "react-router";
 import {firebaseApp} from "./firebase";
 import Logout from "./pages/Logout";
+import store from "./store";
+import { logUser } from "./actions/userAction";
 
 firebaseApp.auth().onAuthStateChanged(user=>{
   if(user){
     console.log("user has signed in or up",user)
+    const {email} = user
+    store.dispatch(logUser(email))
     browserHistory.push("/logout")
   }else {
     console.log("user has signed out or still needs to sign in")

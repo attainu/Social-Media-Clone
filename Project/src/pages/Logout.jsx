@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {firebaseApp} from "../firebase"
-import { Link } from 'react-router-dom';
+import { connect} from 'react-redux';
 
 class Logout extends Component {
     LogOut(){
@@ -9,14 +9,18 @@ class Logout extends Component {
     render() {
         return (
             <div>
-                <Link to ="/login">
+               
                 <button className="btn btn-dander"
                 onClick={()=> this.LogOut()}>Logout</button>
-                </Link>
+             
                 
                 
             </div>
         )
     }
 }
-export default Logout;
+function mapStateToProps(state){
+console.log("state",state);
+return {}
+}
+export default connect(mapStateToProps,null) (Logout);

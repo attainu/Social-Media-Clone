@@ -1,0 +1,61 @@
+import React, { Component } from 'react'
+import {db,storage} from "../../firebase"
+import firebase from "firebase"
+
+class  UploadPost extends Component {
+    state={
+        caption:"",
+        progress:0,
+        image:null
+    }
+     handleChange = (e) => {
+        if(e.target.files[0]){
+            this.setState.image = e.target.files[0]
+        }
+    }
+    handleUpload = () => {
+        const uploadTask = storage.ref(`images/${this.image}`).put(this.image)
+        uploadTask.on(
+            "state_changed",
+            (snapshot) =>{
+                const progress = Math.round ((snapshot.bytesTransferred/snapshot.totalBytes)*100)
+                this.setState.progress(progress)
+            },
+            (error) => {
+                console.log(error);
+                alert(error.message);
+            },
+            ()=>{
+                storage 
+                .ref("images")
+                .child(this.image.name)
+                .getDownloadURL()
+                .then(url =>{
+                    db.collection("posts").add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp,
+                        caption:this.caption,
+                        imageUrl:url,
+                        username:this.username
+                    })
+                    this.setState.progress(0)
+                    this.setState.caption("")
+                    this.setState.image(null)
+                })
+            }
+        )
+
+    }
+    render(){
+     return (
+         <div>
+             <progress value={this.progress} max="100"/>
+             <input type="text" placeholder="Enter a caption.."  />
+             <input type="file" onChange={this.handleChange} />
+             <button onClick ={this.handleUpload}>Upload</button>
+
+         </div>
+     )
+ }
+}
+
+ export default UploadPost;

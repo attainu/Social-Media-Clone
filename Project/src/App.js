@@ -10,6 +10,7 @@ import NavBar from "./components/layout/NavBar";
 import Dashboard from "./components/dashboard/Dashboard";
 import PostDetails from "./components/posts/PostDetails";
 import UploadPost from "./components/posts/UploadPost";
+import { BrowserRouter } from 'react-router-dom';
 
 // // import { browserHistory } from "react-router";
 // // import {firebaseApp} from "./firebase";
@@ -31,9 +32,12 @@ import UploadPost from "./components/posts/UploadPost";
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
       
     <NavBar/>
+
+    
       <Switch>
         <Route exact path="/" component={Dashboard}/>
         <Route path="/post/:id" component={PostDetails}/>
@@ -41,7 +45,10 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/uploadPost" component={UploadPost} />
       </Switch>
+     
     </div>
+     </BrowserRouter>
+
     
   );
 }

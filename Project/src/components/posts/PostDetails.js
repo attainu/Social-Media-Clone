@@ -1,23 +1,25 @@
 import React from 'react'
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 
 const PostDetails = (props) => {
     console.log(props)
-    const id = props.match.params.id
-    console.log(id)
-    
+    const {post} = props;  
+
+    if (post) {
     return (
         <>
             <div className="row">
                 <div className="col s12 m7">
                 <div className="card">
                     <div className="card-image">
-                    <img src="https://picsum.photos/id/237/200/300" alt=" " />
+                    <img src={post.imgURL} alt=" " />
                     </div>
                     <div className="card-content">
-                    <span className="card-title"><strong>Name:{id}</strong> karthik</span>    
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                    <span className="card-title">Posted by {post.username}</span>    
+                    <p>{post.caption}</p>
                     <p className="grey-text">09th August 2020</p>
                     </div>
                 </div>
@@ -27,5 +29,23 @@ const PostDetails = (props) => {
 
     )
 }
+else{
+    return (
+        <div><h3>Loading....</h3></div>
+    )
+}
+}
 
-export default PostDetails;
+
+const mapStateToProps = (state,componentProps) =>{
+    const id = componentProps.match.params.id;
+
+    const posts = state.firestore.data.posts;
+
+    const post = posts ? posts[id] : null
+    return {
+        post:post
+    }
+}
+
+export default compose(connect(mapStateToProps), firestoreConnect([{collection:"posts"}])) (PostDetails);

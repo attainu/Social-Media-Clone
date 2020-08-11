@@ -2,23 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import {createStore , applyMiddleware,compose} from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./redux/reducer/rootReducer";
+import {reduxFirestore, getFirestore,createFirestoreInstance} from "redux-firestore";
+import {ReactReduxFirebaseProvider,getFirebase} from "react-redux-firebase";
+import firebaseConfig from "./firebase";
+import firebase from "firebase/app"
 
-// import {createStore} from 'redux';
-// import { Provider } from 'react-redux';
-// import rootReducer from './store/reducers/rootReducer';
-import { BrowserRouter } from 'react-router-dom';
+
+
+
+const store = createStore(rootReducer,compose(applyMiddleware(thunk.withExtraArgument({getFirestore,getFirebase})),reduxFirestore(firebaseConfig))) 
+
+
+const rrfProps = {
+  firebase,
+  config:firebaseConfig,
+  dispatch:store.dispatch,
+  createFirestoreInstance
+}
 
 // const store = createStore(rootReducer);
 
 ReactDOM.render(
-  <React.StrictMode>
-     
-      {/* <Provider store={store} > */}
-      <BrowserRouter>
-         <App />
-      </BrowserRouter>
-      {/* <Provider/> */}
   
-  </React.StrictMode>,
+     <Provider store={store}>
+       <ReactReduxFirebaseProvider{...rrfProps}>
+       
+      <App />
+      
+      </ReactReduxFirebaseProvider>
+    </Provider>,
   document.getElementById('root')
 );

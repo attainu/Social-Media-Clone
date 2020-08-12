@@ -11,6 +11,7 @@ const PostSummary = ({post}) => {
                     </div>
                     <div className="card-content">
                     <span className="card-title">{post.username}</span>    
+                    
                     <p className="grey-text"></p>
                     </div>
                 </div>

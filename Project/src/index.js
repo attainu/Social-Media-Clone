@@ -1,3 +1,7 @@
+
+
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,6 +13,8 @@ import rootReducer from "./redux/reducer/rootReducer";
 import {reduxFirestore, getFirestore,createFirestoreInstance} from "redux-firestore";
 import {ReactReduxFirebaseProvider,getFirebase} from "react-redux-firebase";
 import firebaseConfig from "./firebase";
+import "firebase/auth";
+import "firebase/firestore";
 import firebase from "firebase/app"
 
 

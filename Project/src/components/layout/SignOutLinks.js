@@ -11,4 +11,4 @@ const SignOutLinks = () => {
     )
 }
 
-export default SignOutLinks
+export default SignOutLinks;

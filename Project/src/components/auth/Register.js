@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { register } from "../../redux/actions/authAction";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import logo  from "./img/logo.svg";
-import  mail  from "./img/mail.svg";
-import  pass  from "./img/mail.svg";
-import  user  from "./img/user.svg";
+import logo from "./img/logo.svg";
+import mail from "./img/mail.svg";
+import pass from "./img/mail.svg";
+import user from "./img/user.svg";
+
 import "./style.css";
 
 class Register extends Component {
@@ -30,14 +31,14 @@ class Register extends Component {
 
     return (
       <div className="align">
-        <img className="logo" src={logo} alt="Logo" />
+        <img className="logo" src={logo} alt="" />
         <div className="card">
           <div className="head">
-            <div></div>
-            <a id="register" href="/" className="selected">
-              Register
-            </a>
-            <div></div>
+            <div>
+              <p id="register" className="selected">
+                Register
+              </p>
+            </div>
           </div>
           <div className="tabs">
             <form onSubmit={this.handleSubmit}>
@@ -45,26 +46,29 @@ class Register extends Component {
                 <div className="input">
                   <input
                     placeholder="Email"
-                    type="text"
+                    id="email"
+                    type="email"
                     onChange={this.handleChange}
                   />
-                  <img src={mail} alt="Mail" />
-                </div>
-                <div className="input">
-                  <input
-                    placeholder="Username"
-                    type="text"
-                    onChange={this.handleChange}
-                  />
-                  <img src={user} alt="User" />
+                  <img src={mail} alt="" />
                 </div>
                 <div className="input">
                   <input
                     placeholder="Password"
+                    id="password"
                     type="password"
                     onChange={this.handleChange}
                   />
-                  <img src={pass} alt="Password" />
+                  <img src={pass} alt="" />
+                </div>
+                <div className="input">
+                  <input
+                    placeholder="Username"
+                    id="userName"
+                    type="text"
+                    onChange={this.handleChange}
+                  />
+                  <img src={user} alt="" />
                 </div>
               </div>
               <button>Register</button>

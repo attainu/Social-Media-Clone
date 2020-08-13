@@ -13,6 +13,7 @@ const postReducer = (state=initState,action) =>{
     switch(action.type){
         case "CREATE_POST":
             console.log("Post Created", action.post)
+            alert("Post Created")
             return state;
         case "CREATE_POST_ERROR":
             console.log("create post error",action.err)   

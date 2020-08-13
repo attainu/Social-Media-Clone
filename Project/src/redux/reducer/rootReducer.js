@@ -9,7 +9,8 @@ const rootReducer = combineReducers ({
     auth: authReducer,
     post:postReducer,
     firestore:firestoreReducer,
-    firebase:firebaseReducer
+    firebase:firebaseReducer,
+    profile:authReducer
     
 })
 

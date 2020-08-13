@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import {register} from "../../redux/actions/authAction"
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class Register extends Component {
     state = {
         email:"",
         password:"",
-        username:""
+        userName:""
     }
     handleChange = (e) =>{
         this.setState({
@@ -13,9 +16,12 @@ class Register extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+       
+        this.props.register(this.state)
     }
     render() {
+        const {authError,auth} = this.props;
+        if(auth.uid) return <Redirect to= "/signin" />
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -34,6 +40,9 @@ class Register extends Component {
                     </div>
                     <div className={"input-field"}>
                         <button className={"btn blue lighten-1 z-depth-0"}>Register</button>
+
+                    <div className="red-text center">
+                        {authError ? <p>{authError}</p> : null }</div>    
                     </div>
                 </form>
                 
@@ -42,4 +51,17 @@ class Register extends Component {
     }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        auth:state.firebase.auth,
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        register:(newUser) => dispatch(register(newUser))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (Register);

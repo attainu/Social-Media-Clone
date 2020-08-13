@@ -59,10 +59,17 @@ import firebase from "firebase/app"
 
 const store = createStore(rootReducer,compose(applyMiddleware(thunk.withExtraArgument({getFirestore,getFirebase})),reduxFirestore(firebaseConfig))) 
 
+const profileSpecificProps = {
+  userProfile:"users",
+  useFirestoreForProfile:true,
+  enabledRedirectHandling: false,
+  resetBeforeLogin:false
+}
+
 
 const rrfProps = {
   firebase,
-  config:firebaseConfig,
+  config:firebaseConfig,profileSpecificProps,
   dispatch:store.dispatch,
   createFirestoreInstance
 }

@@ -7,11 +7,11 @@
 	outline: none;
 	border: none;
 }
-
+/* 
 html, body {
 	height: 100%;
 	background: #0A0A0A;
-}
+} */
 
 .align {
 	height: 100%;
@@ -20,13 +20,15 @@ html, body {
 	justify-content: center;
 	flex-direction: column;
 	padding-bottom: 8px;
+	margin-top: 30px;
 }
 
 .logo {
 	width: 120px;
+	margin-left: 30px;
 }
 
-.card {
+.card{
 	margin-top: 28px;
 	height: 100%;
 	max-height: 446px;
@@ -109,7 +111,8 @@ form {
 .input {
 	position: relative;
 	margin-bottom: 20px;
-	width: 100%;
+	margin-left: 20px;
+	width: 90%;
 	display: flex;
 	align-items: center;
 }
@@ -120,13 +123,13 @@ form {
 	background: #1C1C1C;
 	border-radius: 8px;
 	padding: 16px 18px 16px 51px;
-	color: rgb(220,220,220);
+	/* color: rgb(220,220,220); */
 }
 
 .input img {
 	width: 16px;
 	position: absolute;
-	left: 19px;
+	left: -23px;
 }
 
 .checkbox {
@@ -137,37 +140,12 @@ form {
 	cursor: pointer;
 }
 
-.checkbox input {
-	position: absolute;
-	opacity: 0;
-	height: 0;
-	width: 0;
-}
-
 .checkbox span {
 	display: flex;
 	align-items: center;
 	color: rgb(110,110,110);
 	font-size: 16px;
 	user-select: none;
-}
-
-.checkbox span:before {
-	content: "";
-	width: 22px;
-	height: 22px;
-	border-radius: 6px;
-	margin-right: 16px;
-	background-color: #1C1C1C;
-}
-
-.checkbox:hover input ~ span:before {
-	background-color: rgb(50,50,50);
-}
-
-.checkbox input:checked ~ span:before {
-	background-image: url(./img/checked.png);
-	background-size: cover;
 }
 
 .card button {

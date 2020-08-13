@@ -40,10 +40,10 @@ function App() {
     
       <Switch>
         <Route exact path="/" component={Dashboard}/>
-        <Route path="/post/:id" component={PostDetails}/>
-        <Route path="/signin" component={SignIn} />
-        <Route path="/register" component={Register} />
-        <Route path="/uploadPost" component={UploadPost} />
+        <Route exact path="/post/:id" component={PostDetails}/>
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/uploadPost" component={UploadPost} />
       </Switch>
      
     </div>

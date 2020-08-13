@@ -8,7 +8,6 @@ export default class Notifications extends Component {
                 <ul className="right">
             <li><NavLink to="/">Notification</NavLink></li>
             </ul>
-                
             </div>
         )
     }

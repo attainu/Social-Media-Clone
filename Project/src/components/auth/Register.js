@@ -6,7 +6,6 @@ import logo  from "./img/logo.svg";
 import  mail  from "./img/mail.svg";
 import  pass  from "./img/mail.svg";
 import  user  from "./img/user.svg";
-import  check  from "./img/checked.png";
 import "./style.css";
 
 class Register extends Component {
@@ -31,11 +30,11 @@ class Register extends Component {
 
     return (
       <div className="align">
-        <img className="logo" src={logo} />
+        <img className="logo" src={logo} alt="Logo" />
         <div className="card">
           <div className="head">
             <div></div>
-            <a id="register" className="selected">
+            <a id="register" href="/" className="selected">
               Register
             </a>
             <div></div>
@@ -49,7 +48,7 @@ class Register extends Component {
                     type="text"
                     onChange={this.handleChange}
                   />
-                  <img src={mail} />
+                  <img src={mail} alt="Mail" />
                 </div>
                 <div className="input">
                   <input
@@ -57,7 +56,7 @@ class Register extends Component {
                     type="text"
                     onChange={this.handleChange}
                   />
-                  <img src={user} />
+                  <img src={user} alt="User" />
                 </div>
                 <div className="input">
                   <input
@@ -65,7 +64,7 @@ class Register extends Component {
                     type="password"
                     onChange={this.handleChange}
                   />
-                  <img src={pass} />
+                  <img src={pass} alt="Password" />
                 </div>
               </div>
               <button>Register</button>

@@ -36,8 +36,6 @@ function App() {
     <div className="App">
       
     <NavBar/>
-
-    
       <Switch>
         <Route exact path="/" component={Dashboard}/>
         <Route exact path="/post/:id" component={PostDetails}/>
@@ -45,11 +43,8 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/uploadPost" component={UploadPost} />
       </Switch>
-     
-    </div>
+     </div>
      </BrowserRouter>
-
-    
   );
 }
 

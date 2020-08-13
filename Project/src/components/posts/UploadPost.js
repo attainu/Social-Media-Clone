@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createPost } from "../../redux/actions/postActions";
 
-import {Redirect, Link} from "react-router-dom"
+import {Redirect} from "react-router-dom"
 
 
 
@@ -30,27 +30,23 @@ class UploadPost extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    
-    this.props.sendPost(this.state)
+    this.props.sendPost(this.state);
     }
   
   render() {
-  
-      
      const {auth} =this.props;
      if(auth.isLoaded && !auth.uid) return <Redirect to ="/signin"/>
     return (
-     
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className={"grey-text-darken-3"}> Post Here ...</h5>
           <div>
-            {/* <img
+            <img
               src={ this.props.url || "http://via.placeholder.com/400x300"}
               alt=""
               height="300"
               width="400"
-            /> */}
+            />
             <progress value={this.progress} max="100" />
             <div className={"input-field"}>
               <label htmlFor="caption">Post Content</label>
@@ -72,13 +68,11 @@ class UploadPost extends Component {
             <input type="file" onChange={this.handleChange} />
 
             <div className={"input-field"}>
-             
               <button
                 onClick={this.handleUpload}
                 className={"btn blue lighten-1 z-depth-0"}
               >
                 Post
-                
               </button>
             </div>
           </div>

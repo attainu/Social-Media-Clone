@@ -1,71 +1,99 @@
-import React, { Component } from 'react';
-import {connect} from "react-redux"
-import {signIn} from "../../redux/actions/authAction"
-import { Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signIn } from "../../redux/actions/authAction";
+import logo from "./img/logo.svg";
+// import mail from "./img/mail.svg";
+import pass from "./img/mail.svg";
+import user from "./img/user.svg";
+import "./style.css";
+import { Redirect } from "react-router-dom";
+// import Checkbox from "@material-ui/core/Checkbox";
 
 class SignIn extends Component {
-    state = {
-        email:"",
-        password:""
-        
-    }
-    handleChange = (e) =>{
-        this.setState({
-            [e.target.id] : e.target.value
-        })
-    }
-    handleSubmit = (e) => {
-        e.preventDefault();
-        
-        this.props.signIn(this.state)
-        
-    }
-    render() {
-       
-        const {authError,auth} = this.props
-        if(auth.uid) return <Redirect to= "/" />
-        return (
-            <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
-                    <h5 className={"grey-text-darken-3"}>Sign In Page</h5>
-                    <div className={"input-field"}>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={this.handleChange}/>
-                    </div>
-                    <div className={"input-field"}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={this.handleChange}/>
-                    </div>
-                    {/* <div className={"input-field"}>
-                        <label htmlFor="userName">UserName</label>
-                        <input type="text" id="userName" onChange={this.handleChange}/>
-                    </div> */}
-                    <div className={"input-field"}>
-                        <button className={"btn blue lighten-1 z-depth-0"}>Login</button>
-                    <div className="red-text center">
-                        {authError ? <p>{authError}</p> : null}
-                    </div>
-                    </div>
-                </form>
-                
-            </div>
-        )
-    }
+  state = {
+    email: "",
+    password: "",
+  };
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    this.props.signIn(this.state);
+  };
+
+  render() {
+    const { authError, auth } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
+
+    return (
+      <div className="align">
+        <img className="logo" src={logo} alt=""/>
+        <div className="card">
+          <div className="head">
+            <div>
+            <p id="login" className="selected">
+              Login
+            </p>
+           </div>
+          </div>
+          <div className="tabs">
+            <form onSubmit={this.handleSubmit}>
+              <div className="inputs">
+                <div className="input">
+                  <input
+                    placeholder="Email"
+                    id="email"
+                    type="email"
+                    onChange={this.handleChange}
+                  />
+                  <img src={user} alt="" />
+                </div>
+                <div className="input">
+                  <input
+                    placeholder="Password"
+                    id="password"
+                    type="password"
+                    onChange={this.handleChange}
+                  />
+                  <img src={pass} alt="" />
+                </div>
+                {/* <label className="checkbox">
+                  <Checkbox
+                    defaultChecked
+                    color="primary"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                  <span>Remember me</span>
+                </label> */}
+              </div>
+              <button>Login</button>
+              <div className="red-text center">
+                {authError ? <p>{authError}</p> : null}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 const mapStateToProps = (state) => {
-    console.log(state)
-    return {
-        
-        auth:state.firebase.auth,
-        authError : state.auth.authError
-    }
-}
+  console.log(state);
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
-    console.log(dispatch)
-    return {
-        signIn: (creds) => dispatch(signIn(creds))
-    }
-}
+  console.log(dispatch);
+  return {
+    signIn: (creds) => dispatch(signIn(creds)),
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps) (SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

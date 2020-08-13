@@ -21,7 +21,7 @@ class Dashboard extends Component {
         return (
             <div className="dashbord conatiner">
                 <div className="row">
-                    <div className="col s12 m6">
+                    <div className="col s12 m6 postlist">
                         <PostList posts={posts}/>
                     </div>
                     {/* <UploadPost/> */}

@@ -12,7 +12,7 @@ const NavBar = (props) => {
 
     console.log(auth)
  
-    const links = auth.uid ? <SignInLinks/>&&<Notification/> : <SignOutLinks/>
+    const links = auth.uid ? <SignInLinks/>: <SignOutLinks/>
     console.log(links)
     return (
         <nav className="nav-wrapper grey darken-3">

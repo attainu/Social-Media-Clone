@@ -5,7 +5,6 @@ import logo from "./img/logo.svg";
 import mail from "./img/mail.svg";
 import pass from "./img/mail.svg";
 import user from "./img/user.svg";
-import check from "./img/checked.png";
 import "./style.css";
 import { Redirect } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";

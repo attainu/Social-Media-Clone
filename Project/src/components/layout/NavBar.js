@@ -17,12 +17,12 @@ const NavBar = (props) => {
     return (
         <nav className="nav-wrapper grey darken-3">
             <div className="conatiner">
-                <Link to="/" className="logo">Social</Link>
+                <Link to="/" className="logo">Tasveer</Link>
 
                  {auth.isLoaded && links}
                 {/* <SignInLinks/>
                 <SignOutLinks/> */}
-                <Notification/>
+                {/* <Notification/> */}
             
             </div>
         </nav>

@@ -44,7 +44,6 @@ html, body {
 .extend {
 	max-height: 480px;
 }
-
 .head {
 	width: 100%;
 	display: flex;
@@ -80,6 +79,7 @@ html, body {
 	background: #00FF5C;
 	border-radius: 99px 99px 0 0;
 }
+
 
 .tabs {
 	height: calc(100% - 72px);

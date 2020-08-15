@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 
 const PostList = ({posts}) => {
     return (
-        <div className="post-list section">
+        <div>
             {posts && posts.map(post => {
                 return(
                     <Link key={post.id} to={"/post/" + post.id}>
@@ -12,10 +12,6 @@ const PostList = ({posts}) => {
                     </Link>
                 )
             })}
-            
-           
-
-            
         </div>    
     )
 }

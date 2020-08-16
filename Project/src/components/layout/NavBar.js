@@ -11,19 +11,18 @@ const NavBar = (props) => {
 
 
     console.log(auth)
-    console.log(profile)
  
     const links = auth.uid ? <SignInLinks profile={profile}/> : <SignOutLinks/>
     console.log(links)
     return (
         <nav className="nav-wrapper grey darken-3">
             <div className="conatiner">
-                <Link to="/" className="brand-logo">Social</Link>
+                <Link to="/" className="logo">Tasveer</Link>
 
                  {auth.isLoaded && links}
                 {/* <SignInLinks/>
                 <SignOutLinks/> */}
-                <Notification/>
+                {/* <Notification/> */}
             
             </div>
         </nav>

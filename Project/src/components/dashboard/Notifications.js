@@ -1,23 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react'
+import {NavLink } from "react-router-dom"
 
-const Notification = (props) => {
-    return (
-        <div className="section">
-            {/* <div className="card">
-                <div className="card-content">
-                    <span className="card-title">
-                    
-                        <ul className="notification">
-                           
-                        </ul>
-                    </span>
-                </div>
-            </div> */}
-        </div>
-    )
+export default class Notifications extends Component {
+    render() {
+        return (
+            <div>
+                <ul className="right">
+            <li><NavLink to="/">Notification</NavLink></li>
+            </ul>
+            </div>
+        )
+    }
 }
-
-export default Notification
-
-
-

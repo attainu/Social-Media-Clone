@@ -4,18 +4,14 @@ import {Link} from "react-router-dom"
 
 const PostList = ({posts}) => {
     return (
-        <div className="post-list section">
+        <div>
             {posts && posts.map(post => {
                 return(
                     <Link key={post.id} to={"/post/" + post.id}>
-                    <PostSummary post={post} key={post.id} postId={post.id}/>
+                    <PostSummary post={post} key={post.id}/>
                     </Link>
                 )
             })}
-            
-           
-
-            
         </div>    
     )
 }

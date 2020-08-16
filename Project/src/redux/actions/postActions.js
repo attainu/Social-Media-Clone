@@ -2,10 +2,10 @@ import * as firebase from "firebase";
 import firebaseApp from "../../firebase";
 const storage = firebase.storage();
 
-export const createPost = (post) => {
-  return (dispatch) => {
-    // const firestore = getFirestore();
-    const uploadTask = storage.ref(`images/${post.image.name}`).put(post.image);
+export const createPost = (post) =>{
+    return (dispatch) => {
+        // const firestore = getFirestore();
+        const uploadTask = storage.ref(`images/${post.image.name}`).put(post.image);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -24,27 +24,27 @@ export const createPost = (post) => {
           .getDownloadURL()
           .then((url) => {
             // this.setState({ url });
-            firebase.firestore().collection("posts").add({
-              imgURL: url,
-              caption: post.caption,
-              username: post.username,
-              createdAt: new Date(),
-              postId:post.id
-             
-
-
-            });
+              firebase
+              .firestore()
+              .collection("posts")
+              .add({
+                imgURL: url,
+                caption: post.caption,
+                username: post.username,
+                createdAt: new Date(),
+              })
             //   .then(() => {
             //     // this.setState({ imgURL: ""});
             //   });
-          })
-          .then(() => {
-            dispatch({ type: "CREATE_POST", post: post });
-          })
-          .catch((err) => {
-            dispatch({ type: "CREATE_POST_ERROR", err });
-          });
-      }
-    );
-  };
-};
+          
+          }).then(()=>{
+            dispatch({type:"CREATE_POST", post:post});
+        }).catch ((err)=>{
+            dispatch({type:"CREATE_POST_ERROR",err});
+        })
+        
+
+    }
+    )
+}
+}

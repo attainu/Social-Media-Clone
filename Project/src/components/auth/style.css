@@ -26,6 +26,7 @@ html, body {
 .logo {
 	width: 120px;
 	margin-left: 30px;
+	font-size: 1.5em;
 }
 
 .card{
@@ -43,7 +44,6 @@ html, body {
 .extend {
 	max-height: 480px;
 }
-
 .head {
 	width: 100%;
 	display: flex;
@@ -52,7 +52,7 @@ html, body {
 	justify-content: space-between;
 }
 
-.head p {
+.head a {
 	height: 100%;
 	padding: 0 28px;
 	display: flex;
@@ -79,6 +79,7 @@ html, body {
 	background: #00FF5C;
 	border-radius: 99px 99px 0 0;
 }
+
 
 .tabs {
 	height: calc(100% - 72px);

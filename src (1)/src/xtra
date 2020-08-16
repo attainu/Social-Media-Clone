@@ -1,0 +1,176 @@
+import React, { Component } from 'react'
+import {db,storage} from "../../firebase"
+import firebase from "firebase"
+
+class  UploadPost extends Component {
+    state={
+        caption:"",
+        progress:0,
+        image:null
+    }
+     handleChange = (e) => {
+        if(e.target.files[0]){
+            this.setState.image = e.target.files[0]
+        }
+    }
+    handleUpload = () => {
+        const uploadTask = storage.ref(`images/${this.image}`).put(this.image)
+        uploadTask.on(
+            "state_changed",
+            (snapshot) =>{
+                const progress = Math.round ((snapshot.bytesTransferred/snapshot.totalBytes)*100)
+                this.setState.progress(progress)
+            },
+            (error) => {
+                console.log(error);
+                alert(error.message);
+            },
+            ()=>{
+                storage 
+                .ref("images")
+                .child(this.image.name)
+                .getDownloadURL()
+                .then(url =>{
+                    db.collection("posts").add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp,
+                        caption:this.caption,
+                        imageUrl:url,
+                        username:this.username
+                    })
+                    this.setState.progress(0)
+                    this.setState.caption("")
+                    this.setState.image(null)
+                })
+            }
+        )
+
+    }
+    render(){
+     return (
+         <div>
+             <progress value={this.progress} max="100"/>
+             <input type="text" placeholder="Enter a caption.."  />
+             <input type="file" onChange={this.handleChange} />
+             <button onClick ={this.handleUpload}>Upload</button>
+
+         </div>
+     )
+ }
+}
+
+ export default UploadPost;
+
+
+
+
+ // import React, { Component } from "react";
+// // import firebaseApp from "../../firebase"
+// import firebase from "firebase";
+// import { firebaseApp } from "../../firebase";
+
+// const storage = firebase.storage();
+// // const db = firebaseApp.firestore();
+
+// class UploadPost extends Component {
+//   state = {
+//     caption: "",
+//     progress: 0,
+//     image: null,
+//     url:"",
+//     username:""
+//   };
+//   handleChange = (e) => {
+//     if (e.target.files[0]) {
+//       const image = e.target.files[0];
+//       this.setState(() => ({ image }));
+//     }
+//   };
+
+//   handleUpload = () => {
+//     const { image } = this.state;
+//     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+//     uploadTask.on(
+//       "state_changed",
+//       (snapshot) => {
+//         const progress = Math.round(
+//           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+//         );
+//         this.setState({ progress });
+//       },
+//       (error) => {
+//         console.log(error);
+//       },
+//       () => {
+//         storage.ref('images').child(image.name).getDownloadURL().then(url => {
+//             this.setState({url})
+//             firebase
+//             .firestore()
+//             .collection('posts')
+//             .add({
+//               imgURL: url,
+//               caption :this.state.caption,
+//             //   timestamp: firebase.firestore.FieldValue.serverTimestamp
+
+//             })
+//             // .then(() => {
+//             //     setImgURL('')
+//             //   })
+//             // this.State({progress});
+//             //     this.State.caption("");
+//             //      this.setState.image(null);
+//             })
+//             console.log("image:",image)
+//         });
+//     //     storage
+//     //       .ref("images")
+//     //       .child(image.name)
+//     //       .getDownloadURL()
+//     //       .then((url) => {
+//     //         db.collection("posts").add({
+//     //         //   timestamp: firebase.firestore.FieldValue.serverTimestamp,
+//     //           caption: this.state.caption,
+//     //           imageUrl: url,
+//     //           username: this.state.username,
+//     //         });
+//     //         this.setState.progress(0);
+//     //         this.setState.caption("");
+//     //         this.setState.image(null);
+//     //       });
+//     //   }
+//       }
+   
+    
+    
+// // }
+
+
+//   render() {
+//     return (
+//       <div>
+//         <img src={this.state.url} alt=""  height="300" width="400"/>
+//         <progress value={this.progress} max="100" />
+//         <input type="text" placeholder="Enter a caption..">{this.caption}</input>
+//         <input type="file" onChange={this.handleChange} />
+//         <button onClick={this.handleUpload}>Upload</button>
+        
+//       </div>
+//     );
+//   }
+// }
+
+// export default UploadPost;
+
+
+
+  {/* <div className={"input-field"}>
+                        <label htmlFor="title">Title</label>
+                        <input type="text" id="title" onChange={this.handleChange}/>
+                    </div>
+                    {/* <div className={"input-field"}>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id="password" onChange={this.handleChange}/>
+                    </div> */}
+                    {/* <div className={"input-field"}>
+                        <label htmlFor="caption">Post Content</label>
+                        <input id="content" className={"materialise-textarea"} onChange={this.handleChange}/>
+                    </div> */} 

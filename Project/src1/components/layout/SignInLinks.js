@@ -4,7 +4,6 @@ import {signOut} from "../../redux/actions/authAction";
 import {connect} from "react-redux";
 
 
-
 const SignInLinks = (props) => {
     console.log(props)
     return (

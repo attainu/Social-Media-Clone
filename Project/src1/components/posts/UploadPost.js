@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createPost } from "../../redux/actions/postActions";
 
-import { Redirect } from "react-router-dom"
-
+import {Redirect} from "react-router-dom"
 
 
 
@@ -15,9 +14,6 @@ class UploadPost extends Component {
     image: null,
     progress: 0,
     url: "",
-    createdAt:""
-
-
   };
   handleChange = (e) => {
     if (e.target.files[0]) {
@@ -34,19 +30,23 @@ class UploadPost extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createPost(this.state);
-    this.props.history.push("/")
-  }
-
+    this.props.sendPost(this.state);
+    }
+  
   render() {
-    const { auth } = this.props;
-    if (auth.isLoaded && !auth.uid) return <Redirect to="/signin" />
+     const {auth} =this.props;
+     if(auth.isLoaded && !auth.uid) return <Redirect to ="/signin"/>
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className={"grey-text-darken-3"}> Post Here ...</h5>
           <div>
-
+            <img
+              src={ this.props.url || "http://via.placeholder.com/400x300"}
+              alt=""
+              height="300"
+              width="400"
+            />
             <progress value={this.progress} max="100" />
             <div className={"input-field"}>
               <label htmlFor="caption">Post Content</label>
@@ -65,7 +65,6 @@ class UploadPost extends Component {
               />
             </div>
 
-
             <input type="file" onChange={this.handleChange} />
 
             <div className={"input-field"}>
@@ -82,18 +81,18 @@ class UploadPost extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) =>{
   console.log(state)
   return {
-
+  
     auth: state.firebase.auth
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     sendPost: (post) => dispatch(createPost(post)),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendPost: (post) => dispatch(createPost(post)),
+  };
+};
 
-export default connect(mapStateToProps, { createPost })(UploadPost);
+export default connect(mapStateToProps, mapDispatchToProps)(UploadPost);

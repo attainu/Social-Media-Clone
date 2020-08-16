@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {NavLink } from "react-router-dom"
 
-class Notifications extends Component {
+export default class Notifications extends Component {
     render() {
         return (
             <div>
@@ -12,8 +12,3 @@ class Notifications extends Component {
         )
     }
 }
-
-export default Notification
-
-
-

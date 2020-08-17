@@ -15,7 +15,8 @@ class UploadPost extends Component {
     image: null,
     progress: 0,
     url: "",
-    createdAt:""
+    createdAt:"",
+
 
 
   };
@@ -66,7 +67,7 @@ class UploadPost extends Component {
             </div>
 
 
-            <input type="file" onChange={this.handleChange} />
+            <input type="file"  onChange={this.handleChange} />
 
             <div className={"input-field"}>
               <button

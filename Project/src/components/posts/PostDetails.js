@@ -3,56 +3,50 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router';
-import LikeButton from "./LikeButton"
-// import Comments from './Comments';
-// import CommentList from "./CommentList"
-
-
-
-
-
-
-
+import "./postDetails.css";
+import LikeButton from "./LikeButton";
 
 const PostDetails = (props) => {
 
-
     console.log(props)
-    const { post } = props;
-    const { auth } = props;
-    // const {comments} = this.props
+    const {post} = props;  
 
+    const {auth} = props; 
+    console.log(post) 
 
-    if (auth.isLoaded && !auth.uid) return <Redirect to="/signin" />
+    if(auth.isLoaded && !auth.uid) return <Redirect to ="/signin"/>
 
     if (post) {
-        return (
-            <>
-                <div className="row">
-                    <div className="col s12 m7">
-                        <div className="card">
-                            <div className="card-image">
-                                <img src={post.imgURL} alt=" " />
-                            </div>
-                            <div className="card-content">
-                                <span className="card-title">Posted by {post.username}</span>
-                                <p>{post.caption}</p>
-                                <p>
-                                    Posted {post.createdAt.toDate().toDateString()}
-                                </p>
-                            </div>
-
-
+    return (
+        
+        <>
+            <div>
+                <div style={{display:"flex",justifyContent:"space-around",margin:"18px 0px",borderBottom:"1px solid grey"}}>
+                    <div>
+                        <img className="profile-pic" style={{width:"160px",height:"160px", borderRadius:"80px", marginLeft:"-70px"}} src={post.imgURL}  alt="Profile-img"/>
+                    </div>
+                    <div>
+                        <h4>{post.username}</h4>
+                        <div style={{display:"flex", justifyContent:"space-between",width:"180%"}}>
+                            <h6><strong>5</strong> posts</h6>
+                            <h6><strong>0</strong> followers</h6>
+                            <h6><strong>0</strong> following</h6>
                         </div>
-
                     </div>
                 </div>
-                <LikeButton/>
-                <div>
-                {/* <Comments/>
-                {post.username}:<CommentList/> */}
-                </div>
+             
+                <div className="gallery">
+                    <img className="item" src={post.imgURL} alt="posts"/>
+                    <img className="item" src="https://picsum.photos/id/237/200" alt="posts"/>
+                    <img className="item" src="https://picsum.photos/seed/picsum/200" alt="posts"/>
+                    <img className="item" src="https://picsum.photos/id/1018/200" alt="posts"/>
+                    <img className="item" src="https://picsum.photos/id/1074/200" alt="posts"/>
 
+
+                </div>
+    
+     
+            </div>
 
 
             </>
@@ -76,12 +70,12 @@ const mapStateToProps = (state, componentProps) => {
 
 
 
-    const posts = state.firestore.data.posts;
+    const users = state.firestore.data.users;
 
 
 
 
-    const post = posts ? posts[id] : null
+    const post = users ? users[id] : null
 
 
     return {
@@ -91,4 +85,5 @@ const mapStateToProps = (state, componentProps) => {
     }
 }
 
-export default compose(connect(mapStateToProps), firestoreConnect([{ collection: "posts" }]))(PostDetails);
+
+export default compose(connect(mapStateToProps), firestoreConnect([{collection:"users"}])) (PostDetails);

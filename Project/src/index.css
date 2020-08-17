@@ -12,10 +12,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: url(/img/bg.jpg);
+  /* background: url(/img/bg.jpg); */
   background-size: 100%;
   background-position: bottom;
-  background-color: #79acd7;
+  background-color: white;
   min-height: 100%;
 }
 

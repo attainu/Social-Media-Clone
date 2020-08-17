@@ -13,6 +13,7 @@ export const register = (newUser) => {
       .collection("users").doc(resp.user.uid).set({
         username:newUser.userName,
         firstIntial:newUser.userName[0],
+        
       })
     }).then(()=>{
       dispatch({type:"REGISTRATION_SUCCESS"})

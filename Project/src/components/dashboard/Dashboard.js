@@ -14,7 +14,7 @@ class Dashboard extends Component {
   render() {
     console.log(this.props);
 
-    const { posts } = this.props;
+    const { users } = this.props;
     
    
 
@@ -26,7 +26,7 @@ class Dashboard extends Component {
       <div className="dashbord conatiner">
         <div className="row">
           <div className="list">
-            <PostList posts={posts} />
+            <PostList users={users} />
            
           </div>
           {/* <Notification/> */}
@@ -39,7 +39,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   // console.log(state)
   return {
-    posts: state.firestore.ordered.posts,
+    users: state.firestore.ordered.users,
   
    
     auth: state.firebase.auth,
@@ -48,5 +48,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "posts", orderBy:["createdAt","desc"] }])
+  firestoreConnect([{ collection: "users", orderBy:["createdAt","desc"] }])
 )(Dashboard);

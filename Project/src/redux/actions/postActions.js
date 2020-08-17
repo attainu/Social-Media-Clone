@@ -24,11 +24,12 @@ export const createPost = (post) => {
           .getDownloadURL()
           .then((url) => {
             // this.setState({ url });
-            firebase.firestore().collection("posts").add({
+            firebase.firestore().collection("users").add({
               imgURL: url,
               caption: post.caption,
               username: post.username,
               createdAt: new Date(),
+             
             });
             //   .then(() => {
             //     // this.setState({ imgURL: ""});

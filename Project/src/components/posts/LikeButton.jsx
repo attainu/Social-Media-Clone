@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
+
 class LikeButton extends (Component) {
     state = {
-        count: 0
+        count: 27
     }
 
     incrementMe = ()=>{
@@ -12,9 +13,11 @@ class LikeButton extends (Component) {
         })
     }
     render() {
+
         return (
             <div>
-            <button onClick={this.incrementMe}>Likes:{this.state.count}</button>
+              
+            <button onClick={this.incrementMe}>{this.state.count} </button>
             </div>
 
             
@@ -22,11 +25,3 @@ class LikeButton extends (Component) {
 }
 }
 export default LikeButton;
-
-   
-
-
-
-
-
-

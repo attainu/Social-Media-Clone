@@ -1,6 +1,7 @@
 import React from "react";
 import "./PostSummery.css";
 import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
 
 
 const PostSummary = ({ post }) => {
@@ -10,6 +11,7 @@ const PostSummary = ({ post }) => {
       <div className="blog-post">
         <div className="blog-post__img">
           <img src={post.imgURL} alt=" " />
+         
         </div>
         <div className="blog-post__info">
           <div className="blog-post__date">
@@ -23,9 +25,14 @@ const PostSummary = ({ post }) => {
             facilis laudantium. Assumenda eveniet doloremque consectetur
             doloribus qui ex molestiae sed ipsum.
           </p>
+          
+            
+          
           <Link to={"/post/" +post.id}  className="blog-post__crt">
             Read more
           </Link>
+          
+         
         </div>
       </div>
     </div>

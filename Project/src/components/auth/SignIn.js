@@ -13,6 +13,7 @@ class SignIn extends Component {
   state = {
     email: "",
     password: "",
+  
   };
   handleChange = (e) => {
     this.setState({
@@ -61,6 +62,7 @@ class SignIn extends Component {
                   />
                   <img src={pass} alt="" />
                 </div>
+                
                 {/* <label className="checkbox">
                   <Checkbox
                     defaultChecked

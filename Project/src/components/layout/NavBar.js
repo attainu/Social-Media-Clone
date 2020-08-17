@@ -11,6 +11,7 @@ const NavBar = (props) => {
 
 
     console.log(auth)
+    console.log(profile)
  
     const links = auth.uid ? <SignInLinks profile={profile}/> : <SignOutLinks/>
     console.log(links)

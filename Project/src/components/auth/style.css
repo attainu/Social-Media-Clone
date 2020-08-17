@@ -52,7 +52,7 @@ html, body {
 	justify-content: space-between;
 }
 
-.head a {
+.head p {
 	height: 100%;
 	padding: 0 28px;
 	display: flex;

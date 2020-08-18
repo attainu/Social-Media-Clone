@@ -33,9 +33,7 @@ export const createPost = (post) => {
               
              
             });
-            //   .then(() => {
-            //     // this.setState({ imgURL: ""});
-            //   });
+            
           })
           .then(() => {
             dispatch({ type: "CREATE_POST", post: post });

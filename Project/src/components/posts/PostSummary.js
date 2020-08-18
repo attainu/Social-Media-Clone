@@ -36,7 +36,11 @@ const PostSummary = ({ post }) => {
             
           
           <Link to={"/post/" +post.id}  className="blog-post__crt">
-            Read more
+            View Profile
+          </Link>
+
+          <Link to={"/post/" +post.id}  className="blog-post__crt">
+            Chat Room
           </Link>
           
          

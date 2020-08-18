@@ -32,9 +32,8 @@ class Register extends Component {
     if (auth.uid) return <Redirect to="/signin" />;
 
     return (
-      <div className="align">
-        <img className="logo" src={logo} alt="" />
-        <div className="card">
+      <div className="align-register">
+        <div className="card-register">
           <div className="head">
             <div>
               <p id="register" className="selected">

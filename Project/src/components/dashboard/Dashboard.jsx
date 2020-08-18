@@ -4,7 +4,7 @@ import PostList from "../posts/PostList";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { Redirect } from "react-router-dom";
-import Notification from "../dashboard/Notifications"
+import Notification from "./Notifications"
 
 
 import './Dashboard.css';

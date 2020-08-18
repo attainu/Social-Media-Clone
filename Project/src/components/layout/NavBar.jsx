@@ -4,6 +4,7 @@ import SignInLinks from "./SignInLinks"
 import SignOutLinks from "./SignOutLinks"
 import Notification from "../dashboard/Notifications";
 import { connect } from 'react-redux';
+import "./NavBar.css";
 
 const NavBar = (props) => {
 
@@ -18,7 +19,7 @@ const NavBar = (props) => {
     return (
         <nav className="nav-wrapper grey darken-3">
             <div className="conatiner">
-                <Link to="/" className="logo">Tasveer</Link>
+                <Link to="/" className="logo">Tasveer.</Link>
 
                  {auth.isLoaded && links}
                 {/* <SignInLinks/>

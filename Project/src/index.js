@@ -1,7 +1,5 @@
 
 
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -16,6 +14,7 @@ import firebaseConfig from "./firebase";
 import "firebase/auth";
 import "firebase/firestore";
 import firebase from "firebase/app"
+
 
 
 

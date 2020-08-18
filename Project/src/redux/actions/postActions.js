@@ -30,6 +30,8 @@ export const createPost = (post) => {
               username: post.username,
               createdAt: new Date(),
              
+              
+             
             });
             //   .then(() => {
             //     // this.setState({ imgURL: ""});

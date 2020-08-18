@@ -16,6 +16,7 @@ class UploadPost extends Component {
     progress: 0,
     url: "",
     createdAt:"",
+   
 
 
 
@@ -50,16 +51,18 @@ class UploadPost extends Component {
 
             <progress value={this.progress} max="100" />
             <div className={"input-field"}>
-              <label htmlFor="caption">Post Content</label>
+              
               <input
                 id="caption"
                 className={"materialise-textarea"}
                 onChange={this.Change}
+                placeholder="Caption"
               />
             </div>
             <div className={"input-field"}>
-              <label htmlFor="Username">Name</label>
+             
               <input
+               placeholder="Name"
                 id="username"
                 className={"materialise-textarea"}
                 onChange={this.Change}

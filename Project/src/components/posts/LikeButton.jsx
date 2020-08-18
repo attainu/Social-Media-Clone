@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 
 class LikeButton extends (Component) {
@@ -15,9 +16,9 @@ class LikeButton extends (Component) {
     render() {
 
         return (
-            <div>
+            <div style={{width:"27px",marginTop:"40px"}}>
               
-            <button onClick={this.incrementMe}>{this.state.count} </button>
+                    <FavoriteBorderIcon onClick={this.incrementMe}/>{this.state.count}
             </div>
 
             

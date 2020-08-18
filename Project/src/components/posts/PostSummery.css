@@ -121,7 +121,8 @@ img{
     }
 
     .blog-post__info{
-        margin-top: -150px;
+        margin-top: -150px !important;
+        
     }
 }
 

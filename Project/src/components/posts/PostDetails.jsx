@@ -7,6 +7,7 @@ import "./postDetails.css";
 import LikeButton from "./LikeButton";
 
 const PostDetails = (props) => {
+    
 
     console.log(props)
     const {post} = props;  
@@ -24,13 +25,15 @@ const PostDetails = (props) => {
                 <div style={{display:"flex",justifyContent:"space-around",margin:"18px 0px",borderBottom:"1px solid grey"}}>
                     <div>
                         <img className="profile-pic" style={{width:"160px",height:"160px", borderRadius:"80px", marginLeft:"-70px"}} src={post.imgURL}  alt="Profile-img"/>
+                        <p>{post.description}</p>
                     </div>
                     <div>
                         <h4>{post.username}</h4>
+                      
                         <div style={{display:"flex", justifyContent:"space-between",width:"180%"}}>
-                            <h6><strong>5</strong> posts</h6>
-                            <h6><strong>0</strong> followers</h6>
-                            <h6><strong>0</strong> following</h6>
+                            <h6><h5>6</h5> posts</h6>
+                            <h6><h5>10</h5> Followers</h6>
+                            <h6><h5><strong>7</strong></h5> Following</h6>
                         </div>
                     </div>
                 </div>
@@ -40,6 +43,7 @@ const PostDetails = (props) => {
                     <img className="item" src="https://picsum.photos/id/237/200" alt="posts"/>
                     <img className="item" src="https://picsum.photos/seed/picsum/200" alt="posts"/>
                     <img className="item" src="https://picsum.photos/id/1018/200" alt="posts"/>
+                    <img className="item" src={post.imgURL} alt="posts"/>
                     <img className="item" src="https://picsum.photos/id/1074/200" alt="posts"/>
 
 

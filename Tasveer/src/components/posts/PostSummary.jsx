@@ -3,7 +3,6 @@ import "./PostSummery.css";
 import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
 
-
 import TelegramIcon from "@material-ui/icons/Telegram";
 
 const PostSummary = ({ post }) => {
@@ -16,9 +15,12 @@ const PostSummary = ({ post }) => {
         </div>
         <div className="blog-post__info">
           <LikeButton />
-
-          <TelegramIcon style={{ marginLeft: "60px" }} />
-
+          <Link
+            to={{ pathname: "https://tasveerchatroom.netlify.app/" }}
+            target="_blank"
+          >
+            <TelegramIcon style={{ marginLeft: "60px" }} />
+          </Link>
           <div className="blog-post__date">
             {/* <span>Sunday</span> */}
             <span>
@@ -29,10 +31,7 @@ const PostSummary = ({ post }) => {
             <p>India</p>
           </div>
           <h1 className="blog-post__title">{post.username}</h1>
-          <p className="blog-post__text">
-            {post.caption}
-          </p>
-          
+          <p className="blog-post__text">{post.caption}</p>
 
           <Link to={"/post/" + post.id} className="blog-post__crt">
             View Profile
@@ -42,6 +41,5 @@ const PostSummary = ({ post }) => {
     </div>
   );
 };
-
 
 export default PostSummary;
